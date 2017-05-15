@@ -1,0 +1,190 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper{
+    width: 450px;
+    margin: 0 auto;
+}
+
+h1{
+    width: 450px;
+    height: 50px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+p{
+    width: 450px;
+    height: 50px;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.chessboard{
+    width: 450px;
+    height: 450px;
+    background: #F9CC9D;
+}
+
+.chess{
+    position: relative;
+    width: 30px;
+    height: 30px;
+    float: left;
+}
+.chess:before{ 
+    content: "";
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    top: 15px;
+    height: 1px;
+    background: #000; 
+}
+
+.chess:after{ 
+    content: "";
+    position: absolute;
+    z-index: 2;
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: #000; 
+}
+
+.chess.left:before{ 
+    left: 15px;
+    right: 0;
+    top: 15px;
+    height: 1px;
+}
+
+.chess.left:after{ 
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+}
+
+.chess.right:before{ 
+    left: 0;
+    right: 15px;
+    top: 15px;
+    height: 1px;
+}
+
+.chess.right:after{ 
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+}
+
+.chess.top:before{ 
+    left: 0;
+    right: 0;
+    top: 15px;
+    height: 1px;
+}
+
+.chess.top:after{ 
+    left: 15px;
+    top: 15px;
+    bottom: 0;
+    width: 1px;
+}
+
+.chess.bottom:before{ 
+    left: 0;
+    right: 0;
+    top: 15px;
+    height: 1px;
+}
+
+.chess.bottom:after{ 
+    left: 15px;
+    bottom: 15px;
+    width: 1px;
+}
+
+.chess.top.left:before{ 
+    left: 15px;
+    right: 0;
+    top: 15px;
+    height: 1px;
+}
+
+.chess.top.right:after{ 
+    left: 15px;
+    top: 15px;
+    bottom: 0;
+    width: 1px;
+}
+
+.chess.top.right:before{ 
+    left: 0;
+    right: 15px;
+    top: 15px;
+    height: 1px;
+}
+
+.chess.top.left:after{ 
+    left: 15px;
+    top: 15px;
+    bottom: 0;
+    width: 1px;
+}
+
+.chess.bottom.left:before{ 
+    left: 15px;
+    right: 0;
+    top: 15px;
+    height: 1px;
+}
+
+.chess.bottom.left:after{ 
+    left: 15px;
+    bottom: 15px;
+    width: 1px;
+}
+
+.chess.bottom.right:before{ 
+    left: 0;
+    right: 15px;
+    top: 15px;
+    height: 1px;
+}
+
+.chess.bottom.left:after{ 
+    left: 15px;
+    bottom: 15px;
+    width: 1px;
+}
+
+.active {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.active:before{
+    content: none;
+}
+
+.active:after{
+    content: none;
+}
+
+.black{
+    background: #000;
+}
+
+.white{
+    background: #fff;
+}
+
