@@ -89,7 +89,7 @@ function winJudge (i, j, color) {
             break;
         }
     }
-    for(row = i - 1; row > 0 && row > i - 5; row--) {
+    for(row = i - 1; row >= 0 && row > i - 5; row--) {
         if(dataArr[row] && dataArr[row][j] == color) {
             count++;
             isWin(count, color);
@@ -109,7 +109,7 @@ function winJudge (i, j, color) {
             break;
         }
     }
-    for(column = j - 1; j > 0 && j > j - 5; column--) {
+    for(column = j - 1; j >= 0 && j > j - 5; column--) {
         if(dataArr[i] && dataArr[i][column] == color) {
             count++;
             isWin(count, color);
@@ -120,8 +120,7 @@ function winJudge (i, j, color) {
 
     //135deg
     count = 1;
-    for(row = i + 1, column = j + 1; row < 15 && column < 15 && row < i + 5 && column < i + 5; row++, column++){
-        console.log(dataArr[row][column],row, column);
+    for(row = i + 1, column = j + 1; row < 15 && column < 15 && row < i + 5 && column < j + 5; row++, column++){
         if(dataArr[row] && dataArr[row][column] == color){
             count++;
             isWin(count, color);
@@ -129,7 +128,7 @@ function winJudge (i, j, color) {
             break;
         }
     }
-    for(row = i - 1, column = j - 1; row > 0 && column > 0 && row > i - 5 && column > i - 5; row--, column--){
+    for(row = i - 1, column = j - 1; row >= 0 && column >= 0 && row > i - 5 && column > j - 5; row--, column--){
         if(dataArr[row] && dataArr[row][column] == color){
             count++;
             isWin(count, color);
@@ -140,7 +139,8 @@ function winJudge (i, j, color) {
 
     //45deg
     count = 1;
-    for(row = i - 1, column = j + 1; row > 0 && column < 15 && row > i - 5 && column < i + 5; row--, column++){
+    for(row = i + 1, column = j - 1; row < 15 && column >= 0 && row < i + 5 && column > j - 5; row++, column--){
+        console.log(row,column);
         if(dataArr[row] && dataArr[row][column] == color){
             count++;
             isWin(count, color);
@@ -148,7 +148,9 @@ function winJudge (i, j, color) {
             break;
         }
     }
-    for(row = i + 1, column = j - 1; row < 15 && column > 0 && row < i + 5 && column > i - 5; row++, column--){
+
+    for(row = i - 1, column = j + 1; row >= 0 && column < 15 && row > i - 5 && column < j + 5; row--, column++){
+        console.log(row,column);
         if(dataArr[row] && dataArr[row][column] == color){
             count++;
             isWin(count, color);
