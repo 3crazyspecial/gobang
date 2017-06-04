@@ -1,11 +1,13 @@
 var chessboard = document.getElementsByClassName('chessboard')[0];
 var point = document.getElementsByClassName('point')[0];
+var button = document.getElementsByClassName('restart')[0];
 var color = 'black';
 var dataArr = [];
 var win = false;
 
 createBoard();
 chessboard.onclick = setChess;
+button.onclick = restart;
 
 
 //棋盘格子的绘制
@@ -139,8 +141,7 @@ function winJudge (i, j, color) {
 
     //45deg
     count = 1;
-    for(row = i + 1, column = j - 1; row < 15 && column >= 0 && row < i + 5 && column > j - 5; row++, column--){
-        console.log(row,column);
+    for(row = i - 1, column = j + 1; row >= 0 && column < 15 && row > i - 5 && column < j + 5; row--, column++){
         if(dataArr[row] && dataArr[row][column] == color){
             count++;
             isWin(count, color);
@@ -149,8 +150,7 @@ function winJudge (i, j, color) {
         }
     }
 
-    for(row = i - 1, column = j + 1; row >= 0 && column < 15 && row > i - 5 && column < j + 5; row--, column++){
-        console.log(row,column);
+    for(row = i + 1, column = j - 1; row < 15 && column >= 0 && row < i + 5 && column > j - 5; row++, column--){
         if(dataArr[row] && dataArr[row][column] == color){
             count++;
             isWin(count, color);
@@ -164,7 +164,6 @@ function winJudge (i, j, color) {
 
 function isWin(num, color) {
     if(num == 5){
-        console.log(color == 'black');
         if(color == 'black') {
             point.innerHTML = '<p class="point">黑棋获胜</p>';
         } else {
@@ -175,6 +174,45 @@ function isWin(num, color) {
         chessboard.onclick = null;
     } else {
         win = false;
+    }
+}
+
+function restart () {
+    //清空数据
+    for(var i = 0; i < 15; i++) {
+        var restartArr = [];
+        for(var j = 0; j < 15; j++){
+            restartArr.push('');
+        }
+        dataArr[i] = restartArr;
+    }
+
+    //恢复游戏默认属性
+    color = 'black';
+    point.innerHTML = '<p class="point">黑棋先下</p>';
+
+    //如果是获胜时点击的重新开始，落棋事件会被取消，需要重新开启事件
+    chessboard.onclick = setChess;
+    
+
+    //清空棋子
+    var divCollection = chessboard.getElementsByTagName('div');
+    var len = divCollection.length;
+    var divClassName;
+
+    for(var i = 0; i < len; i++){
+        divClassName = divCollection[i].className;
+        
+        //通过对类名的判断筛选来恢复类名达到视觉上清空棋子
+        if(divClassName.indexOf('active black') != -1){
+            divClassName = divClassName.replace('active black','');
+            divCollection[i].className = divClassName;
+        }
+
+        if(divClassName.indexOf('active white') != -1){
+            divClassName = divClassName.replace('active white','');
+            divCollection[i].className = divClassName;
+        }
     }
 }
 
